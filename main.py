@@ -1,7 +1,7 @@
 condicion = True
-Producto=[]
-Precio=[]
-Cantidad=[]
+L_Productos=[]
+L_Precios=[]
+L_Stock=[]
 print("""_______________________________________\n/bienvenido Esclavo al Control de stock/\n----------------------------------------""")
 while condicion:
     print("""         ===menu==
@@ -14,25 +14,44 @@ while condicion:
         condicion=False
     elif opcion=="1":
         print("puso 1")
-        Producto.append(input("Nombre del producto: "))
-        Precio.append(int(input("Precio: ")))
-        Cantidad.append(int(input("Cantidad: ")))
-        print("Productos: ",Producto)
-        print("Precioas: ",Precio)
-        print("Cantidad: ",Cantidad)
+        L_Productos.append(input("Nombre del producto: "))
+        L_Precios.append(int(input("Precio: ")))
+        L_Stock.append(int(input("Cantidad: ")))
+        print("Productos: ",L_Productos)
+        print("Precioas: ",L_Precios)
+        print("Cantidad: ",L_Stock)
         
     elif opcion =="2":
-        for i in range(len(Producto)):
-            print(i,Producto[i])
+        for i in range(len(L_Productos)):
+            print(i,L_Productos[i])
         modifica=int(input("Indice a modificar: "))
-        print(f"modifica el indice {modifica}")
-        CantidadActualizada= int(input("cantidad a actualizar"))
-        Cantidad[modifica]=Cantidad[modifica] + CantidadActualizada
-        print(f"la cantidad de {Producto[i]} ahora es : {Cantidad[modifica]}")
+        print(f"modifica el indice: {modifica}")
+        if (modifica <0 or modifica >=len(L_Productos) ):
+            print("""
+                  !!!ERROR!!!
+            Producto no encontrado""")
+        else:
+            
+            CantidadActualizada= int(input("cantidad a actualizar: "))
+            L_Stock[modifica]=L_Stock[modifica] + CantidadActualizada
+            print(f"la cantidad de {L_Productos[modifica]} ahora es: {L_Stock[modifica]}")
   
     elif opcion =="3":
-        if Producto == []:
+        if L_Productos == []:
             print("NO HAY PRODUCTOS REGISTRADOS")
-    else: 
-        print("Error")
+            
+        else: 
+            for i in range(len(L_Productos)):
+                print(f"""
+                Producto N°: {i+1}
+                Nombre:{L_Productos[i]}
+                Precio: ${L_Precios[i]}
+                Stock: {L_Stock[i]} Unidades
+                -----------------------------""")
+    else:
+        print("""
+                !!!ERROR!!!  
+        INGRESE UNA OPCION CORRECTA""")
 print("PROGRAMA FINALIZADO")        
+
+
