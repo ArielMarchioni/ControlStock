@@ -1,0 +1,4 @@
+elif opcion == "7":
+    for i in range(len(L_Stock)):
+        if L_Stock[i] < 5:
+            print(L_Productos[i], "-", L_Stock[i], "unidades")
